@@ -15,16 +15,14 @@ get '/Lock' do
 	
 	if id.nil?
 		"MUST SPECIFY ID"
-	elsif(approve != nil)
+	elsif(approve = 1)
 		"success approve"
-	elsif(deny != nil)
+	elsif(deny = 1)
 		"Success deny"
-	elsif(find != nil)
+	elsif(find = 1)
 		"Success find"
-	elsif(viewlog != nil)
+	elsif(viewlog = 1)
 		"Success viewlog"
-	else
-		"no command specified"
 	end
 	
 	
