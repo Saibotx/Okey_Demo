@@ -19,7 +19,7 @@ get '/Lock' do
 		case
 		when approve = 1
 			#approve code here
-			Success approve
+			puts "Success approve"
 		when deny = 1
 			#deny code here
 			Success deny
