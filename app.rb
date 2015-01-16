@@ -6,8 +6,14 @@ get '/hi' do
 end
 
 get '/approved' do
-	File.open('./tmp/approved-id.log', 'a') do |f|
-		f.write(params['id'] + "\n")
+	if File.exist?('./tmp/approved-id.log')
+		File.open('./tmp/approved-id.log', 'a') do |f|
+			f.write(params['id'] + "\n")
+		end
+	else
+		myfile = File.new('./tmp/approved-id.log', "w+")
+		myfile.puts(params['id'] + "\n")
+		myfile.close
 	end
 end
 
