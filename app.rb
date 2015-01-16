@@ -6,7 +6,7 @@ get '/hi' do
 end
 
 get '/approved' do
-	File.open('log/approved-id.log', 'a') do |f|
+	File.open('/tmp/approved-id.log', 'a') do |f|
 		f.write(params['id'] + "\n")
 	end
 end
@@ -16,7 +16,7 @@ get '/find' do
 	
 	registered_ids = []
 	
-	File.open('log/approved-id.log', 'r').each_line do |l|
+	File.open('/tmp/approved-id.log', 'r').each_line do |l|
 		registered_ids << l.sub("\n", "")
 	end
 	
@@ -36,7 +36,7 @@ get '/denied' do
 	
 	registered_ids = []
 	
-	File.open('log/approved-id.log', 'r').each_line do |l|
+	File.open('/tmp/approved-id.log', 'r').each_line do |l|
 		registered_ids << l.sub("\n", "")
 	end
 	
@@ -48,7 +48,7 @@ get '/denied' do
 		end
 	end
 	
-	File.open('log/approved-id.log', 'w') do |f|
+	File.open('/tmp/approved-id.log', 'w') do |f|
 		f.write(registered_ids.join("\n"))
 		f.write("\n")
 	end
