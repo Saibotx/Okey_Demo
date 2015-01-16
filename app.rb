@@ -14,23 +14,23 @@ get '/Lock' do
 	viewlog = params['viewlog']
 	
 	if id.nil?
-		puts "MUST SPECIFY ID"
+		"MUST SPECIFY ID"
 	elsif 1
 		case
 		when approve = 1
 			#approve code here
-			puts "Success approve"
+			"Success approve"
 		when deny = 1
 			#deny code here
-			Success deny
+			"Success deny"
 		when find = 1
 			#find code here
-			Success find
+			"Success find"
 		when viewlog = 1
 			#viewlog code here
-			Success viewlog
+			"Success viewlog"
 		else
-			puts "NO COMMAND SPECIFIED"
+			"NO COMMAND SPECIFIED"
 		end
 	end
 	
