@@ -54,10 +54,12 @@ get '/denied' do
 		end
 	end
 	
-	File.open('./tmp/approved-id.log', 'w') do |f|
-		f.write(registered_ids.join("\n"))
-		f.write("\n")
-	end
+		myfile = File.new('./tmp/approved-id.log', "w+")
+		myfile.puts(registered_ids.join("\n"))
+		myfile.puts("\n")
+		myfile.close
+		
+	
 end
 
 get '/test' do
