@@ -5,6 +5,40 @@ get '/hi' do
 	'dsfsdf'
 end
 
+
+get '/Lock' do
+	id = params['id']
+	approve = params['approve']
+	deny = params['deny']
+	find = params['find']
+	viewlog = params['viewlog']
+	
+	if id.nil?
+		puts "MUST SPECIFY ID"
+	end 
+	
+	else
+		case
+		when approve = 1
+			#approve code here
+			Success
+		when deny = 1
+			#deny code here
+			Success
+		when find = 1
+			#find code here
+			Success
+		when viewlog = 1
+			#viewlog code here
+			Success
+		else
+			puts "NO COMMAND SPECIFIED"
+		end
+	end
+	
+end
+
+
 get '/approved' do
 	if File.exist?('./tmp/approved-id.log')
 		File.open('./tmp/approved-id.log', 'a') do |f|
