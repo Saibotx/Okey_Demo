@@ -54,12 +54,12 @@ get '/denied' do
 		end
 	end
 	
-		myfile = File.new('./tmp/approved-id.log', "w+")
-		myfile.puts(registered_ids.join("\n"))
-		myfile.puts("\n")
-		myfile.close
-		
+	File.delete('./tmp/approved-id.log')
 	
+	myfile = File.new('./tmp/approved-id.log', "w+")
+	myfile.puts(registered_ids.join("\n"))
+	myfile.puts("\n")
+	myfile.close
 end
 
 get '/test' do
