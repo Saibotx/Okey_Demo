@@ -21,16 +21,16 @@ get '/Lock' do
 		case
 		when approve = 1
 			#approve code here
-			Success
+			Success approve
 		when deny = 1
 			#deny code here
-			Success
+			Success deny
 		when find = 1
 			#find code here
-			Success
+			Success find
 		when viewlog = 1
 			#viewlog code here
-			Success
+			Success viewlog
 		else
 			puts "NO COMMAND SPECIFIED"
 		end
