@@ -15,6 +15,8 @@ get '/approved' do
 		myfile.puts(params['id'] + "\n")
 		myfile.close
 	end
+	
+	"success"
 end
 
 get '/find' do
@@ -60,6 +62,8 @@ get '/denied' do
 	myfile.puts(registered_ids.join("\n"))
 	myfile.puts("\n")
 	myfile.close
+	
+	"success"
 end
 
 get '/test' do
