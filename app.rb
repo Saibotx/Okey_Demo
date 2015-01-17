@@ -47,18 +47,48 @@ get '/lock' do
 								#DOING LOG ADD
 								#must have date-time-id-action
 								time1 = Time.new
+								
+								
+								
 								if File.exist?("./tmp/#{device}-log.log")
 									File.open("./tmp/#{device}-log.log", 'a') do |f|
-										f.write("#{time1.inspect} - #{id} - #{action} \n")
+										f.write(time1.inspect + "-" id + "-"  action + "\n")
 									end
 									ret = "Added #{time1.inspect} - #{id} - #{action} \n"
 								else
 									myfile = File.new("./tmp/#{device}log.log", "w+")
-									myfile.puts("#{time1.inspect} - #{id} - #{action} \n")
+									myfile.puts(time1.inspect + "-" id + "-"  action + "\n")
 									myfile.close
 									ret = "newfile for #{device} created and added #{time1.inspect} - #{id} - #{action} \n"
 								end
 								ret
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+	#	if File.exist?("./tmp/#{device}-approved-id.log")
+	#		File.open("./tmp/#{device}-approved-id.log", 'a') do |f|
+	#			f.write(params['id'] + "\n")
+	#		end
+	#		ret = "added! #{id}"
+	##		myfile = File.new("./tmp/#{device}-approved-id.log", "w+")
+		#	myfile.puts(params['id'] + "\n")
+		#	myfile.close
+		#	ret = "newfile created and id added"
+		#end
+		#ret
+		
+		
+		
+		
+		
+
 							end
 						else
 							#doing view permission file
