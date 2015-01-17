@@ -16,20 +16,7 @@ get '/Lock' do
 	if id.nil?
 		"MUST SPECIFY ID"
 	end
-	if approve.nil?
-		if deny.nil?
-			if find.nil?
-				if viewlog.nil?
-					"We have PROBLEMS"
-				else
-					"VIEWLOG"
-				end
-			else
-				"DOING FIND"
-			end
-		else
-			"DOING DENY"
-		end
+	
 	else
 		"DOING APPROVE"
 	end
