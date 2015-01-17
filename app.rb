@@ -15,17 +15,25 @@ get '/Lock' do
 	
 	if id.nil?
 		"MUST SPECIFY ID"
-	elsif(approve = 1)
-		"success approve"
-	elsif(deny = 1)
-		"Success deny"
-	elsif(find = 1)
-		"Success find"
-	elsif(viewlog = 1)
-		"Success viewlog"
 	end
-	
-	
+	if approve.nil?
+		if deny.nil?
+			if find.nil?
+				if viewlog.nil?
+					"We have PROBLEMS"
+				else
+					"VIEWLOG"
+				end
+			else
+				"DOING FIND"
+			end
+		else
+			"DOING DENY"
+		end
+	else
+		"DOING APPROVE"
+	end
+		
 end
 
 
