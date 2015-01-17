@@ -19,6 +19,19 @@ get '/lock' do
 	logclear = params['logclear']
 	action = params['action']
 	
+	puts " device = #{device}"
+	puts " id = #{id}"
+	puts " approve = #{approve}"
+	puts " deny = #{deny}"
+	puts " find = #{find}"
+	puts " viewlog = #{viewlog}"
+	puts " delete = #{delete}"
+	puts " viewp = #{viewp}"
+	puts " logadd = #{logadd}"
+	puts " logclear = #{logclear}"
+	puts " action = #{action}"
+	
+	
 	if id.nil?
 		"MUST SPECIFY IdD"
 	else
