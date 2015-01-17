@@ -34,7 +34,7 @@ get '/lock' do
 							#TODO TODO TODO TODO
 							if File.exist?("./tmp/#{device}-approved-id.log")
 								File.open("./tmp/#{device}-approved-id.log", 'r').each_line do |l|
-									registered_ids << l #.sub("\n", "")
+									registered_ids << l.sub("\n", "")
 								end
 							else
 								registered_ids = "File not found - view permissions"
