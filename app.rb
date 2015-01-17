@@ -56,7 +56,7 @@ get '/lock' do
 									end
 									ret = "Added #{time1.inspect} - #{id} - #{action} \n"
 								else
-									myfile = File.new("./tmp/#{device}log.log", "w+")
+									myfile = File.new("./tmp/#{device}-log.log", "w+")
 									myfile.puts(" #{time1.inspect} - #{id} - #{action} \n")
 									myfile.close
 									ret = "newfile for #{device} created and added #{time1.inspect} - #{id} - #{action} \n"
