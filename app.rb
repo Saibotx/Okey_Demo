@@ -46,7 +46,6 @@ get '/Lock' do
 					File.open("./tmp/#{device}-approved-id.log", 'r').each_line do |l|
 						registered_ids << l.sub("\n", "")
 					end
-					File.close("./tmp/#{device}-approved-id.log")
 					ret = "false find"
 					registered_ids.each do |rid|
 						if rid == id
@@ -72,8 +71,8 @@ get '/Lock' do
 						registered_ids.delete(rid)
 					end
 				end
-					File.delete("./tmp/#{device}-approved-id.log")
-					myfile = File.new("./tmp/#{device}-approved-id.log", "w+")
+				File.delete("./tmp/#{device}-approved-id.log")
+				myfile = File.new("./tmp/#{device}-approved-id.log", "w+")
 				myfile.puts(registered_ids.join("\n"))
 				myfile.puts("\n")
 				myfile.close
@@ -86,7 +85,7 @@ get '/Lock' do
 	else
 		#do approved
 		if File.exist?("./tmp/#{device}-approved-id.log")
-			File.open("./tmp/#{device}-approved-id.log") do |f|
+			File.open("./tmp/#{device}-approved-id.log", 'w') do |f|
 				f.write(params['id'] + "\n")
 			end
 		else
