@@ -52,12 +52,12 @@ get '/lock' do
 								
 								if File.exist?("./tmp/#{device}-log.log")
 									File.open("./tmp/#{device}-log.log", 'a') do |f|
-										f.write(time1.inspect + "-" id + "-"  action + "\n")
+										f.write(" #{time1.inspect} - #{id} - #{action} \n")
 									end
 									ret = "Added #{time1.inspect} - #{id} - #{action} \n"
 								else
 									myfile = File.new("./tmp/#{device}log.log", "w+")
-									myfile.puts(time1.inspect + "-" id + "-"  action + "\n")
+									myfile.puts(" #{time1.inspect} - #{id} - #{action} \n")
 									myfile.close
 									ret = "newfile for #{device} created and added #{time1.inspect} - #{id} - #{action} \n"
 								end
