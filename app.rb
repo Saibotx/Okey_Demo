@@ -46,6 +46,7 @@ get '/Lock' do
 					File.open("./tmp/#{device}-approved-id.log", 'r').each_line do |l|
 						registered_ids << l.sub("\n", "")
 					end
+					File.close("./tmp/#{device}-approved-id.log")
 					ret = "false find"
 					registered_ids.each do |rid|
 						if rid == id
