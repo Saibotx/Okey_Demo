@@ -15,6 +15,9 @@ get '/lock' do
 	viewlog = params['viewlog']
 	delete = params['delete']
 	viewp = params['viewp']
+	logadd = params['viewp']
+	logclear = params['viewp']
+	action = params['action']
 	
 	if id.nil?
 		"MUST SPECIFY IdD"
@@ -28,12 +31,51 @@ get '/lock' do
 					if delete.nil?
 						if viewp.nil?
 							if viewlog.nil?
+								if logadd.nil?
+									if logclear.nil?
+										"ERROR: Put a command"
+									else
+										#DOING LOG CLEAR
+										if File.exist?("./tmp/#{device}-log.log")
+											File.delete("./tmp/#{device}-log.log")
+											"Logs deleted"
+										else
+											"FILE DNE - logclear"
+										end
+									end
+								else
+									#DOING LOG ADD
+									#must have date-time-id-action
+									time1 = Time.new
+									if File.exist?("./tmp/#{device}-log.log")
+										File.open("./tmp/#{device}-log.log", 'a') do |f|
+											f.write("#{time1.inspect} - #{id} - #{action}" + "\n")
+										end
+										ret = "Added #{time1.inspect} - #{id} - #{action}" + "\n"
+									else
+										myfile = File.new("./tmp/#{device}log.log", "w+")
+										myfile.puts("#{time1.inspect} - #{id} - #{action}" + "\n")
+										myfile.close
+										ret = "newfile created and added #{time1.inspect} - #{id} - #{action}" + "\n"
+									end
+									ret
+								end
+							else
+								#DOING view log
+								log_lines = []
+								if File.exist?("./tmp/#{device}-log.log")
+									File.open("./tmp/#{device}-log.log", 'r').each_line do |l|
+										log_lines << l
+									end
+								else
+									log_lines = "ERROR: File not found - logview"
+								end
+								log_lines
+														
 							end
-							"ERROR: Put a command"
 						else
 							#doing view permission file
 							registered_ids = []
-							#TODO TODO TODO TODO
 							if File.exist?("./tmp/#{device}-approved-id.log")
 								File.open("./tmp/#{device}-approved-id.log", 'r').each_line do |l|
 									registered_ids << l
