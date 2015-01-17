@@ -22,6 +22,7 @@ get '/Lock' do
 		if deny.nil?
 			if find.nil?
 				if viewlog.nil?
+					"ERROR: Put a command"
 				else
 					"doing viewlog"
 				end
