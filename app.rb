@@ -77,7 +77,7 @@ get '/Lock' do
 				myfile.puts("\n")
 				myfile.close
 				"doing DENY"
-			end
+			
 			else
 			"device file not found - DENY"
 			end
