@@ -15,8 +15,8 @@ get '/lock' do
 	viewlog = params['viewlog']
 	delete = params['delete']
 	viewp = params['viewp']
-	logadd = params['viewp']
-	logclear = params['viewp']
+	logadd = params['logadd']
+	logclear = params['logclear']
 	action = params['action']
 	
 	if id.nil?
