@@ -68,7 +68,7 @@ get '/lock' do
 									myfile = File.new("./tmp/#{device}log.log", "w+")
 									myfile.puts("#{time1.inspect} - #{id} - #{action}" + "\n")
 									myfile.close
-									ret = "newfile created and added #{time1.inspect} - #{id} - #{action}" + "\n"
+									ret = "newfile for #{device} created and added #{time1.inspect} - #{id} - #{action}" + "\n"
 								end
 								ret
 							end
