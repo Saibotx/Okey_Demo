@@ -34,7 +34,6 @@ get '/Lock' do
 	else
 		"DOING APPROVE"
 	end
-	"done"
 		
 end
 
