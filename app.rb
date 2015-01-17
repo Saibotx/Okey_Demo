@@ -38,7 +38,7 @@ get '/lock' do
 									#DOING LOG CLEAR
 									if File.exist?("./tmp/#{device}-log.log")
 										File.delete("./tmp/#{device}-log.log")
-										"Logs deleted"
+										"Logs deletedd"
 									else
 										"FILE DNE - logclear"
 									end
