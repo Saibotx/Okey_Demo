@@ -15,8 +15,6 @@ get '/Lock' do
 	
 	if id.nil?
 		"MUST SPECIFY ID"
-	end
-	
 	else
 		"DOING APPROVE"
 	end
