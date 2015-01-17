@@ -43,7 +43,7 @@ get '/Lock' do
 				#doing find
 				registered_ids = []
 				if File.exist?("./tmp/#{device}-approved-id.log")
-					File.open("./tmp/#{device}-approved-id.log" 'r').each_line do |l|
+					File.open("./tmp/#{device}-approved-id.log", 'r').each_line do |l|
 						registered_ids << l.sub("\n", "")
 					end
 					ret = "false find"
