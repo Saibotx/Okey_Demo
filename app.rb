@@ -26,7 +26,7 @@ get '/lock' do
 			if find.nil?
 				if viewlog.nil?
 					if delete.nil?
-						if viewperm.nil?
+						if viewp.nil?
 							"ERROR: Put a command"
 						else
 							#doing view permission file
