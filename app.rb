@@ -44,7 +44,6 @@ get '/lock' do
 							registered_ids
 
 						end
-						"ERROR: Put a command"
 					else
 						#doing delete
 						if File.exist?("./tmp/#{device}-approved-id.log")
