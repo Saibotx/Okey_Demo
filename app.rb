@@ -14,7 +14,7 @@ get '/lock' do
 	find = params['find']
 	viewlog = params['viewlog']
 	delete = params['delete']
-	viewperm = params['viewperm']
+	viewp = params['viewp']
 	
 	if id.nil?
 		"MUST SPECIFY IdD"
