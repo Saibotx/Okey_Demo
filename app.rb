@@ -86,7 +86,7 @@ get '/Lock' do
 		#do approved
 		if File.exist?("./tmp/#{device}-approved-id.log")
 			File.open("./tmp/#{device}-approved-id.log") do |f|
-				f.write(params['id']+"\n")
+				f.write(params['id'] + "\n")
 			end
 		else
 			myfile = File.new("./tmp/#{device}-approved-id.log", "w+")
