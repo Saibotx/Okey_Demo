@@ -85,26 +85,29 @@ get '/Lock' do
 		end	
 	else
 		#do approved
-		registered_ids = []
+#		registered_ids = []
+#		if File.exist?("./tmp/#{device}-approved-id.log")
+#			File.open("./tmp/#{device}-approved-id.log", 'r').each_line do |l|
+#				registered_ids << l.sub("\n", "")
+#			end
+#			registered_ids.each do |rid|
+#				if rid = id
+#					registered_ids << id.sub("\n", "")
+#					ret = "id is already on the list!"
+#				else
+#					registered_ids << id.sub("\n", "")
+#					ret = "approved done"
+#				end
+#			end
+#			File.delete("./tmp/#{device}-approved-id.log")
+#			myfile = File.new("./tmp/#{device}-approved-id.log", "w+")
+#			myfile.puts(registered_ids.join("\n"))
+#			myfile.puts("\n")
+#			myfile.close
 		if File.exist?("./tmp/#{device}-approved-id.log")
-			File.open("./tmp/#{device}-approved-id.log", 'r').each_line do |l|
-				registered_ids << l.sub("\n", "")
-			end
-			registered_ids.each do |rid|
-				if rid = id
-					registered_ids << id.sub("\n", "")
-					ret = "id is already on the list!"
-				else
-					registered_ids << id.sub("\n", "")
-					ret = "approved done"
-				end
-			end
-			File.delete("./tmp/#{device}-approved-id.log")
-			myfile = File.new("./tmp/#{device}-approved-id.log", "w+")
-			myfile.puts(registered_ids.join("\n"))
-			myfile.puts("\n")
-			myfile.close
-			
+			File.open("./tmp/#{device}-approved-id.log", 'a') do |f|
+				f.write(params['id'] + "\n")
+			end			
 			
 			
 #			File.open("./tmp/#{device}-approved-id.log", 'w') do |f|
