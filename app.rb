@@ -14,6 +14,7 @@ get '/lock' do
 	find = params['find']
 	viewlog = params['viewlog']
 	delete = params['delete']
+	viewperm = params['viewperm']
 	
 	if id.nil?
 		"MUST SPECIFY IdD"
@@ -25,6 +26,22 @@ get '/lock' do
 			if find.nil?
 				if viewlog.nil?
 					if delete.nil?
+						if viewperm.nil?
+							"ERROR: Put a command"
+						else
+							#doing view permission file
+							registered_ids = []
+							#TODO TODO TODO TODO
+							if File.exist?("./tmp/#{device}-approved-id.log")
+								File.open("./tmp/#{device}-approved-id.log", 'r').each_line do |l|
+									registered_ids << l #.sub("\n", "")
+								end
+							else
+								registered_ids = "File not found - view permissions"
+							end
+							registered_ids
+
+						end
 						"ERROR: Put a command"
 					else
 						#doing delete
@@ -37,6 +54,7 @@ get '/lock' do
 					end
 				else
 					#viewlog stuff goes here
+					#TODO TODO TODO TODO
 					"doing viewlog"
 				end
 			else
@@ -84,36 +102,12 @@ get '/lock' do
 			end
 		end	
 	else
-		#do approved
-#		registered_ids = []
-#		if File.exist?("./tmp/#{device}-approved-id.log")
-#			File.open("./tmp/#{device}-approved-id.log", 'r').each_line do |l|
-#				registered_ids << l.sub("\n", "")
-#			end
-#			registered_ids.each do |rid|
-#				if rid = id
-#					registered_ids << id.sub("\n", "")
-#					ret = "id is already on the list!"
-#				else
-#					registered_ids << id.sub("\n", "")
-#					ret = "approved done"
-#				end
-#			end
-#			File.delete("./tmp/#{device}-approved-id.log")
-#			myfile = File.new("./tmp/#{device}-approved-id.log", "w+")
-#			myfile.puts(registered_ids.join("\n"))
-#			myfile.puts("\n")
-#			myfile.close
+		#doign approve
 		if File.exist?("./tmp/#{device}-approved-id.log")
 			File.open("./tmp/#{device}-approved-id.log", 'a') do |f|
 				f.write(params['id'] + "\n")
 			end
 			ret = "added! #{id}"
-			
-			
-#			File.open("./tmp/#{device}-approved-id.log", 'w') do |f|
-#				f.write(params['id'] + "\n")
-#			end
 		else
 			myfile = File.new("./tmp/#{device}-approved-id.log", "w+")
 			myfile.puts(params['id'] + "\n")
