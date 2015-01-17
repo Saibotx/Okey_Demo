@@ -16,7 +16,7 @@ get '/Lock' do
 	delete = params['delete']
 	
 	if id.nil?
-		"MUST SPECIFY ID"
+		"MUST SPECIFY IdD"
 	else
 		"WE HAVE ID"
 	end
