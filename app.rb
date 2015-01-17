@@ -6,7 +6,7 @@ get '/hi' do
 end
 
 
-get '/Lock' do
+get '/lock' do
 	device = "lock"
 	id = params['id']
 	approve = params['approve']
