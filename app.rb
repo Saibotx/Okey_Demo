@@ -91,7 +91,7 @@ get '/Lock' do
 				registered_ids << l.sub("\n", "")
 			end
 			registered_ids.each do |rid|
-				if rid == id
+				if rid = id
 					ret = "id is already on the list!"
 				else
 					registered_ids << id.sub("\n", "")
